@@ -15,6 +15,7 @@ end
 ## First we need to add back in the Ubuntu default repositories
 execute "copy-sources-list" do
   command "cp /etc/apt/sources.list.ORIG /etc/apt/sources.list"
+  action :run
   not_if do FileTest.file?("/etc/apt/sources.list.ORIG") end
 end
 
