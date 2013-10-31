@@ -8,6 +8,7 @@ version          '0.1.0'
 supports "ubuntu"
 
 depends "rightscale"
+depends "apt"
 depends "git"
 
 recipe "licode_cookbook::default",
