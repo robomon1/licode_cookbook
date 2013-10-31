@@ -7,9 +7,14 @@
 # All rights reserved - Do Not Redistribute
 #
 
+execute "apt-get update" do
+  command "apt-get update -qq -y"
+  action :nothing
+  
+end
 ## First we need to add back in the Ubuntu default repositories
 execute "copy-sources-list" do
-  command "cp /etc/apt/sources.list.ORIG /etc/apt/sources.list && apt-get update"
+  command "cp /etc/apt/sources.list.ORIG /etc/apt/sources.list"
   not_if do FileTest.file?("/etc/apt/sources.list.ORIG") end
 end
 
