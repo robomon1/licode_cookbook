@@ -12,7 +12,7 @@ rightscale_marker :begin
 root_dir = node[:licode_cookbook][:install_dir]
 build_dir = "#{root_dir}/build"
 lib_dir = "#{build_dir}/libdeps"
-prefix_dir = "#{libdir}/build"
+prefix_dir = "#{lib_dir}/build"
 
 execute "apt-get-update" do
   command "apt-get update -qq -y"
