@@ -10,4 +10,4 @@
 default[:licode_cookbook][:uri] = ""
 
 # Licode install (root) dir
-default[:licode_cookbook][:root_dir] = "/var/lib/licode"
+default[:licode_cookbook][:install_dir] = "/var/lib/licode"
