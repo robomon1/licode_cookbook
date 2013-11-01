@@ -42,7 +42,7 @@ package "mongodb"
 #package "curl"
 
 apt_repository "node.js" do
-  uri "http://ppa.launchpad.net/chris-lea/node.js"
+  uri "http://ppa.launchpad.net/chris-lea/node.js/ubuntu"
   distribution "precise"
   components ["main"]
   action :add
