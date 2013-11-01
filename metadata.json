@@ -28,7 +28,8 @@
   "groupings": {
   },
   "recipes": {
-    "licode_cookbook::default": "Install the dependencies for licode."
+    "licode_cookbook::default": "Install the dependencies for licode.",
+    "licode_cookbook::installErizo": "Build and Install the erizoController for licode."
   },
   "version": "0.1.0"
 }

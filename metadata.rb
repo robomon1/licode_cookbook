@@ -13,3 +13,6 @@ depends "git"
 
 recipe "licode_cookbook::default",
   "Install the dependencies for licode."
+
+recipe "licode_cookbook::installErizo",
+  "Build and Install the erizoController for licode."
