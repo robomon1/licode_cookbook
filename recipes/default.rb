@@ -9,6 +9,7 @@
 
 execute "apt-get-update" do
   command "apt-get update -qq -y"
+  returns [0,100]
   action :nothing
 end
 
