@@ -16,7 +16,7 @@ end
 execute "copy-sources-list" do
   command "cp /etc/apt/sources.list.ORIG /etc/apt/sources.list"
   action :run
-  not_if do FileTest.file?("/etc/apt/sources.list.ORIG") end
+  only_if do FileTest.file?("/etc/apt/sources.list.ORIG") end
   notifies :run, "execute[apt-get-update]", :immediately
 end
 
