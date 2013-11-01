@@ -36,6 +36,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "licode_cookbook/install_dir": {
+      "display_name": "Licode Installation Directory",
+      "description": "Enter the directory where you want to install Licode too.",
+      "required": "required",
+      "recipes": [
+        "licode_cookbook::default"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {

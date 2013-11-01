@@ -8,3 +8,6 @@
 
 # Licode git repository URI
 default[:licode_cookbook][:uri] = ""
+
+# Licode install (root) dir
+default[:licode_cookbook][:root_dir] = "/var/lib/licode"

@@ -26,3 +26,10 @@ attribute "licode_cookbook/uri",
     "Enter the uri of git repository to download the licdoe code",
   :required => "required",
   :recipes => ["licode_cookbook::default"]
+
+attribute "licode_cookbook/install_dir",
+  :display_name => "Licode Installation Directory",
+  :description =>
+    "Enter the directory where you want to install Licode too.",
+  :required => "required",
+  :recipes => ["licode_cookbook::default"]
