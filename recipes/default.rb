@@ -9,7 +9,7 @@
 
 rightscale_marker :begin
 
-root_dir = node[:licode_cloud][:root_dir]
+root_dir = node[:licode_cloud][:install_dir]
 build_dir = "#{root_dir}/build"
 lib_dir = "#{build_dir}/libdeps"
 prefix_dir = "#{libdir}/build"
