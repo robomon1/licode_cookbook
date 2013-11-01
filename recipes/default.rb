@@ -143,8 +143,8 @@ bash "install-libsrtp" do
     EOH
 end
 
-git "/var/lib/licode" do
-  repository node[:licode_cloud][:uri]
+git node[:licode_cookbook][:install_dir] do
+  repository node[:licode_cookbook][:uri]
   reference "master"
   action :sync
 end
