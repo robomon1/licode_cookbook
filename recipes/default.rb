@@ -68,9 +68,16 @@ execute "npm-node-gyp" do
   action :run
 end
 
+## Checkout the licode code first to get directories for building the rest 
+git node[:licode_cookbook][:install_dir] do
+  repository node[:licode_cookbook][:uri]
+  reference "master"
+  action :sync
+end
+
 ## Install openssl for building erizo
 bash "install-openssl" do
-  cwd build_dir
+  cwd root_dir
   code <<-EOH
     mkdir -p #{lib_dir} 
     cd #{lib_dir}
@@ -85,7 +92,7 @@ end
 
 ## Install libnice for building erizo
 bash "install-libnice" do
-  cwd build_dir
+  cwd root_dir
   code <<-EOH
     mkdir -p #{lib_dir} 
     cd #{lib_dir}
@@ -100,7 +107,7 @@ end
 
 ## Install mediadeps
 bash "install-mediadeps" do
-  cwd build_dir
+  cwd root_dir
   code <<-EOH
     mkdir -p #{lib_dir} 
     cd #{lib_dir}
@@ -115,7 +122,7 @@ end
 
 ## Install mediadeps_nogpl
 bash "install-mediadeps_nogpl" do
-  cwd build_dir
+  cwd root_dir
   code <<-EOH
     mkdir -p #{lib_dir} 
     cd #{lib_dir}
@@ -141,12 +148,6 @@ bash "install-libsrtp" do
     make -s V=0
     make install
     EOH
-end
-
-git node[:licode_cookbook][:install_dir] do
-  repository node[:licode_cookbook][:uri]
-  reference "master"
-  action :sync
 end
 
 rightscale_marker :end
