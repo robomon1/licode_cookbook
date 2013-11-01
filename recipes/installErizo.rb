@@ -9,7 +9,7 @@
 
 rightscale_marker :begin
 
-script "installErizo.sh" do
+bash "install_erizo" do
   cwd "/var/lib/licode/scripts"
   code <<-EOH
     ./installErizo.sh
