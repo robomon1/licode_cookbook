@@ -14,7 +14,6 @@ bash "install_erizo" do
   code <<-EOH
     ./installErizo.sh
     EOH
-  
 end
 
 rightscale_marker :end

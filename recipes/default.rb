@@ -42,6 +42,9 @@ package "rabbitmq-server"
 package "mongodb"
 #package "openjdk-6-jre"
 #package "curl"
+package "yasm"
+package "libvpx."
+package "libx264."
 
 apt_repository "node.js" do
   uri "http://ppa.launchpad.net/chris-lea/node.js/ubuntu"
@@ -58,6 +61,81 @@ end
 execute "npm-node-gyp" do
   command "npm install -g node-gyp"
   action :run
+end
+
+## Install openssl for building erizo
+bash "install-openssl" do
+  cwd "/var/lib/licode/build"
+  code <<-EOH
+    mkdir -p ./libdeps 
+    cd ./libdeps
+    curl -O http://www.openssl.org/source/openssl-1.0.1e.tar.gz
+    tar -zxvf openssl-1.0.1e.tar.gz
+    cd openssl-1.0.1e
+    ./config --prefix=$PREFIX_DIR -fPIC
+    make -s V=0
+    make install
+    EOH
+end
+
+## Install libnice for building erizo
+bash "install-libnice" do
+  cwd "/var/lib/licode/build"
+  code <<-EOH
+    mkdir -p ./libdeps 
+    cd ./libdeps
+    curl -O http://nice.freedesktop.org/releases/libnice-0.1.4.tar.gz
+    tar -zxvf libnice-0.1.4.tar.gz
+    cd libnice-0.1.4
+    ./configure --prefix=$PREFIX_DIR
+    make -s V=0
+    make install
+    EOH
+end
+
+## Install mediadeps
+bash "install-mediadeps" do
+  cwd "/var/lib/licode/build"
+  code <<-EOH
+    mkdir -p ./libdeps 
+    cd ./libdeps
+    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
+    tar -zxvf libav-9.9.tar.gz
+    cd libav-9.9
+    ./configure --prefix=$PREFIX_DIR --enable-shared --enable-gpl --enable-libvpx --enable-libx264
+    make -s V=0
+    make install
+    EOH
+end
+
+## Install mediadeps_nogpl
+bash "install-mediadeps_nogpl" do
+  cwd "/var/lib/licode/build"
+  code <<-EOH
+    mkdir -p ./libdeps 
+    cd ./libdeps
+    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
+    tar -zxvf libav-9.9.tar.gz
+    cd libav-9.9
+    ./configure --prefix=$PREFIX_DIR --enable-shared --enable-libvpx
+    make -s V=0
+    make install
+    EOH
+end
+
+## Install libsrtp
+bash "install-libsrtp" do
+  cwd "/var/lib/licode/build"
+  code <<-EOH
+    mkdir -p ./third_party/srtp 
+    cd ./third_party/srtp
+    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
+    tar -zxvf libav-9.9.tar.gz
+    cd libav-9.9
+    ./configure --prefix=/var/lib/licode/build/libdeps/build --enable-shared --enable-libvpx
+    make -s V=0
+    make install
+    EOH
 end
 
 git "/var/lib/licode" do
