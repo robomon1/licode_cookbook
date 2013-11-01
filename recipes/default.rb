@@ -7,11 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 
-execute "apt-get update" do
+execute "apt-get-update" do
   command "apt-get update -qq -y"
   action :nothing
-  
 end
+
 ## First we need to add back in the Ubuntu default repositories
 execute "copy-sources-list" do
   command "cp /etc/apt/sources.list.ORIG /etc/apt/sources.list"
@@ -44,7 +44,7 @@ apt_repository "node.js" do
   distribution "precise"
   components ["main"]
   action :add
-  notifies :run, "execute[apt-get update]", :immediately
+  notifies :run, "execute[apt-get-update]", :immediately
 end
 
 package "nodejs"
