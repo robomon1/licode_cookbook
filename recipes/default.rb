@@ -51,6 +51,9 @@ apt_repository "node.js" do
   notifies :run, "execute[apt-get-update]", :immediately
 end
 
-package "nodejs"
+execute "npm-node-gyp" do
+  command "npm install -g node-gyp"
+  action :run
+end
 
 rightscale_marker :end
