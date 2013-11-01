@@ -60,4 +60,10 @@ execute "npm-node-gyp" do
   action :run
 end
 
+git "/var/lib/licode" do
+  repository "https://github.com/robomon1/licode.git"
+  reference "master"
+  action :sync
+end
+
 rightscale_marker :end
