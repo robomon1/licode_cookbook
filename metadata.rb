@@ -16,3 +16,6 @@ recipe "licode_cookbook::default",
 
 recipe "licode_cookbook::installErizo",
   "Build and Install the erizoController for licode."
+
+recipe "licode_cookbook::installNuve",
+  "Build and Install nuve for licode."
