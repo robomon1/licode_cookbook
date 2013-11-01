@@ -125,7 +125,7 @@ end
 
 ## Install libsrtp
 bash "install-libsrtp" do
-  cwd "/var/lib/licode/build"
+  cwd "/var/lib/licode"
   code <<-EOH
     mkdir -p ./third_party/srtp 
     cd ./third_party/srtp
