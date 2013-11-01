@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+rightscale_marker :begin
+
 execute "apt-get-update" do
   command "apt-get update -qq -y"
   returns [0,100]
@@ -50,3 +52,5 @@ apt_repository "node.js" do
 end
 
 package "nodejs"
+
+rightscale_marker :end
