@@ -19,3 +19,10 @@ recipe "licode_cookbook::installErizo",
 
 recipe "licode_cookbook::installNuve",
   "Build and Install nuve for licode."
+
+attribute "licode_cookbook/uri",
+  :display_name => "Licode git uri",
+  :description =>
+    "Enter the uri of git repository to download the licdoe code",
+  :required => "required",
+  :recipes => ["licode_cookbook::default"]

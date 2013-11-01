@@ -24,6 +24,19 @@
   "replacing": {
   },
   "attributes": {
+    "licode_cookbook/uri": {
+      "display_name": "Licode git uri",
+      "description": "Enter the uri of git repository to download the licdoe code",
+      "required": "required",
+      "recipes": [
+        "licode_cookbook::default"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
+    }
   },
   "groupings": {
   },
