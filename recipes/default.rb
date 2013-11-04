@@ -141,12 +141,11 @@ bash "install-libsrtp" do
   code <<-EOH
     mkdir -p #{root_dir}/third_party/srtp 
     cd #{root_dir}/third_party/srtp
-    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
-    tar -zxvf libav-9.9.tar.gz
-    cd libav-9.9
-    ./configure --prefix=#{prefix_dir} --enable-shared --enable-libvpx
+    CFLAGS="-fPIC" ./configure --prefix=$PREFIX_DIR
     make -s V=0
+    make uninstall
     make install
+    cd $CURRENT_DIR
     EOH
 end
 
