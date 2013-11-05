@@ -141,11 +141,10 @@ bash "install-libsrtp" do
   code <<-EOH
     mkdir -p #{root_dir}/third_party/srtp 
     cd #{root_dir}/third_party/srtp
-    CFLAGS="-fPIC" ./configure --prefix=$PREFIX_DIR
+    CFLAGS="-fPIC" ./configure --prefix=#{prefix_dir}
     make -s V=0
     make uninstall
     make install
-    cd $CURRENT_DIR
     EOH
 end
 
