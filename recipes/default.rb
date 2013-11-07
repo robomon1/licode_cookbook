@@ -56,10 +56,9 @@ package "mongodb"
 #package "openjdk-6-jre"
 #package "curl"
 
-## These following packages are handled by the build scripts for licode
-#package "yasm"
-#package "libvpx."
-#package "libx264."
+package "yasm"
+package "libvpx."
+package "libx264."
 
 package "nodejs" do
   options "--force-yes"
