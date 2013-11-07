@@ -71,11 +71,11 @@ execute "npm-node-gyp" do
 end
 
 ## Checkout the licode code first to get directories for building the rest 
-git node[:licode_cookbook][:install_dir] do
-  repository node[:licode_cookbook][:uri]
-  reference "master"
-  action :sync
-end
+#git node[:licode_cookbook][:install_dir] do
+#  repository node[:licode_cookbook][:uri]
+#  reference "master"
+#  action :sync
+#end
 
 ## Install openssl for building erizo
 #bash "install-openssl" do
