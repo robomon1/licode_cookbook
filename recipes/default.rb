@@ -14,7 +14,7 @@ build_dir = "#{root_dir}/build"
 lib_dir = "#{build_dir}/libdeps"
 prefix_dir = "#{lib_dir}/build"
 
-execute "apt-get-update" do
+agu = execute "apt-get-update" do
   command "apt-get update -qq -y"
   returns [0,100]
   action :nothing
@@ -25,8 +25,16 @@ execute "copy-sources-list" do
   command "cp /etc/apt/sources.list.ORIG /etc/apt/sources.list"
   action :run
   only_if do FileTest.file?("/etc/apt/sources.list.ORIG") end
-  notifies :run, "execute[apt-get-update]", :immediately
 end
+
+apt_repository "node.js" do
+  uri "http://ppa.launchpad.net/chris-lea/node.js/ubuntu"
+  distribution "precise"
+  components ["main"]
+  action :add
+end
+
+agu.run_action(:run)
 
 ## Licode build dependencies
 package "python-software-properties"
@@ -47,17 +55,11 @@ package "rabbitmq-server"
 package "mongodb"
 #package "openjdk-6-jre"
 #package "curl"
-package "yasm"
-package "libvpx."
-package "libx264."
 
-apt_repository "node.js" do
-  uri "http://ppa.launchpad.net/chris-lea/node.js/ubuntu"
-  distribution "precise"
-  components ["main"]
-  action :add
-  notifies :run, "execute[apt-get-update]", :immediately
-end
+## These following packages are handled by the build scripts for licode
+#package "yasm"
+#package "libvpx."
+#package "libx264."
 
 package "nodejs" do
   options "--force-yes"
@@ -76,76 +78,76 @@ git node[:licode_cookbook][:install_dir] do
 end
 
 ## Install openssl for building erizo
-bash "install-openssl" do
-  cwd root_dir
-  code <<-EOH
-    mkdir -p #{lib_dir} 
-    cd #{lib_dir}
-    curl -O http://www.openssl.org/source/openssl-1.0.1e.tar.gz
-    tar -zxvf openssl-1.0.1e.tar.gz
-    cd openssl-1.0.1e
-    ./config --prefix=#{prefix_dir} -fPIC
-    make -s V=0
-    make install
-    EOH
-end
+#bash "install-openssl" do
+#  cwd root_dir
+#  code <<-EOH
+#    mkdir -p #{lib_dir} 
+#    cd #{lib_dir}
+#    curl -O http://www.openssl.org/source/openssl-1.0.1e.tar.gz
+#    tar -zxvf openssl-1.0.1e.tar.gz
+#    cd openssl-1.0.1e
+#    ./config --prefix=#{prefix_dir} -fPIC
+#    make -s V=0
+#    make install
+#    EOH
+#end
 
 ## Install libnice for building erizo
-bash "install-libnice" do
-  cwd root_dir
-  code <<-EOH
-    mkdir -p #{lib_dir} 
-    cd #{lib_dir}
-    curl -O http://nice.freedesktop.org/releases/libnice-0.1.4.tar.gz
-    tar -zxvf libnice-0.1.4.tar.gz
-    cd libnice-0.1.4
-    ./configure --prefix=#{prefix_dir}
-    make -s V=0
-    make install
-    EOH
-end
+#bash "install-libnice" do
+#  cwd root_dir
+#  code <<-EOH
+#    mkdir -p #{lib_dir} 
+#    cd #{lib_dir}
+#    curl -O http://nice.freedesktop.org/releases/libnice-0.1.4.tar.gz
+#    tar -zxvf libnice-0.1.4.tar.gz
+#    cd libnice-0.1.4
+#    ./configure --prefix=#{prefix_dir}
+#    make -s V=0
+#    make install
+#    EOH
+#end
 
 ## Install mediadeps
-bash "install-mediadeps" do
-  cwd root_dir
-  code <<-EOH
-    mkdir -p #{lib_dir} 
-    cd #{lib_dir}
-    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
-    tar -zxvf libav-9.9.tar.gz
-    cd libav-9.9
-    ./configure --prefix=#{prefix_dir} --enable-shared --enable-gpl --enable-libvpx --enable-libx264
-    make -s V=0
-    make install
-    EOH
-end
+#bash "install-mediadeps" do
+#  cwd root_dir
+#  code <<-EOH
+#    mkdir -p #{lib_dir} 
+#    cd #{lib_dir}
+#    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
+#    tar -zxvf libav-9.9.tar.gz
+#    cd libav-9.9
+#    ./configure --prefix=#{prefix_dir} --enable-shared --enable-gpl --enable-libvpx --enable-libx264
+#    make -s V=0
+#    make install
+#    EOH
+#end
 
 ## Install mediadeps_nogpl
-bash "install-mediadeps_nogpl" do
-  cwd root_dir
-  code <<-EOH
-    mkdir -p #{lib_dir} 
-    cd #{lib_dir}
-    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
-    tar -zxvf libav-9.9.tar.gz
-    cd libav-9.9
-    ./configure --prefix=#{prefix_dir} --enable-shared --enable-libvpx
-    make -s V=0
-    make install
-    EOH
-end
+#bash "install-mediadeps_nogpl" do
+#  cwd root_dir
+#  code <<-EOH
+#    mkdir -p #{lib_dir} 
+#    cd #{lib_dir}
+#    curl -O https://www.libav.org/releases/libav-9.9.tar.gz
+#    tar -zxvf libav-9.9.tar.gz
+#    cd libav-9.9
+#    ./configure --prefix=#{prefix_dir} --enable-shared --enable-libvpx
+#    make -s V=0
+#    make install
+#    EOH
+#end
 
 ## Install libsrtp
-bash "install-libsrtp" do
-  cwd root_dir
-  code <<-EOH
-    mkdir -p #{root_dir}/third_party/srtp 
-    cd #{root_dir}/third_party/srtp
-    CFLAGS="-fPIC" ./configure --prefix=#{prefix_dir}
-    make -s V=0
-    make uninstall
-    make install
-    EOH
-end
+#bash "install-libsrtp" do
+#  cwd root_dir
+#  code <<-EOH
+#    mkdir -p #{root_dir}/third_party/srtp 
+#    cd #{root_dir}/third_party/srtp
+#    CFLAGS="-fPIC" ./configure --prefix=#{prefix_dir}
+#    make -s V=0
+#    make uninstall
+#    make install
+#    EOH
+#end
 
 rightscale_marker :end
