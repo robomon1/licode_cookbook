@@ -11,7 +11,8 @@
   "dependencies": {
     "rightscale": ">= 0.0.0",
     "apt": ">= 0.0.0",
-    "git": ">= 0.0.0"
+    "git": ">= 0.0.0",
+    "repo": ">= 0.0.0"
   },
   "recommendations": {
   },
@@ -56,7 +57,8 @@
   "recipes": {
     "licode_cookbook::default": "Install the dependencies for licode.",
     "licode_cookbook::installErizo": "Build and Install the erizoController for licode.",
-    "licode_cookbook::installNuve": "Build and Install nuve for licode."
+    "licode_cookbook::installNuve": "Build and Install nuve for licode.",
+    "licode_cookbook::updateCode": "Updates application source files from the remote repository. This recipe will call the corresponding provider from the app server cookbook, which will download/update application source code."
   },
   "version": "0.1.0"
 }

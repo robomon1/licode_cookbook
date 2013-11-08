@@ -10,6 +10,7 @@ supports "ubuntu"
 depends "rightscale"
 depends "apt"
 depends "git"
+depends "repo"
 
 recipe "licode_cookbook::default",
   "Install the dependencies for licode."
@@ -19,6 +20,11 @@ recipe "licode_cookbook::installErizo",
 
 recipe "licode_cookbook::installNuve",
   "Build and Install nuve for licode."
+
+recipe "licode_cookbook::updateCode",
+  "Updates application source files from the remote repository. This recipe" +
+  " will call the corresponding provider from the app server cookbook," +
+  " which will download/update application source code."
 
 attribute "licode_cookbook/uri",
   :display_name => "Licode git uri",
