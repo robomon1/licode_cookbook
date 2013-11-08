@@ -13,9 +13,8 @@ log "  Downloading project repo"
 # Calling "repo" LWRP to download remote project repository
 # See cookbooks/repo/resources/default.rb for the "repo" resource.
 repo "default" do
-  destination deploy_dir
+  destination node[:licode_cookbook][:install_dir]
   action node[:repo][:default][:perform_action].to_sym
-  app_user node[:app][:user]
   repository node[:repo][:default][:repository]
   persist false
 end
