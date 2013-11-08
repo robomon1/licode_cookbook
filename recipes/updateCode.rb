@@ -12,11 +12,12 @@ rightscale_marker :begin
 log "  Downloading project repo"
 # Calling "repo" LWRP to download remote project repository
 # See cookbooks/repo/resources/default.rb for the "repo" resource.
-repo "default" do
+repo_ros "licode" do
   destination node[:licode_cookbook][:install_dir]
   action node[:repo][:default][:perform_action].to_sym
   repository node[:repo][:default][:repository]
   persist false
+  unpack_source true
 end
 
 rightscale_marker :end
