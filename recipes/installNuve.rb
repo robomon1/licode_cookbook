@@ -9,12 +9,20 @@
 
 rightscale_marker :begin
 
-bash "install_erizo" do
+bash "install_nuve" do
   cwd "/var/lib/licode/scripts"
   code <<-EOH
     ./installNuve.sh
     EOH
   
+end
+
+bash "install_nuve" do
+  cwd "/var/lib/licode/nuve"
+  code <<-EOH
+    ./installNuve.sh
+    EOH
+
 end
 
 rightscale_marker :end
