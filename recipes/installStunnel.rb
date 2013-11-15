@@ -72,4 +72,13 @@ template "/etc/stunnel/stunnel.conf" do
 #  )
 end
 
+# Enabling stunnel to start on system boot and restarting to apply new settings
+service value_for_platform(
+  ["ubuntu"] => {"default" => "stunnel4"},
+  ["centos", "redhat"] => {"default" => "stunnel"}
+) do
+  supports :reload => true, :restart => true, :start => true, :stop => true
+  action [:enable, :restart]
+end
+
 rightscale_marker :end
