@@ -48,6 +48,15 @@ template "/etc/stunnel/gd_bundle.crt" do
 end
 
 # Writing stunnel configuration file
+template "/etc/default/stunnel4" do
+  source "stunnel.default.erb"
+  cookbook "licode_cookbook"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+# Writing stunnel configuration file
 template "/etc/stunnel/stunnel.conf" do
   source "stunnel.conf.erb"
   cookbook "licode_cookbook"
