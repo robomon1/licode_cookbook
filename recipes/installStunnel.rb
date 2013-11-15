@@ -73,7 +73,16 @@ template "/etc/stunnel/stunnel.conf" do
 end
 
 # Enabling stunnel to start on system boot and restarting to apply new settings
-service "stunnel4" do
+service value_for_platform(
+  ["ubuntu"] => {"default" => "stunnel4"},
+  ["centos", "redhat"] => {"default" => "stunnel"}
+) do
+  case node["platform"]
+  when "ubuntu"
+    if node["platform_version"].to_f >= 9.10
+      provider Chef::Provider::Service::Upstart
+    end
+  end
   supports :reload => true, :restart => true, :start => true, :stop => true
   action [:enable, :restart]
 end
