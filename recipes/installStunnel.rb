@@ -77,12 +77,6 @@ service value_for_platform(
   ["ubuntu"] => {"default" => "stunnel4"},
   ["centos", "redhat"] => {"default" => "stunnel"}
 ) do
-  case node["platform"]
-  when "ubuntu"
-    if node["platform_version"].to_f >= 9.10
-      provider Chef::Provider::Service::Upstart
-    end
-  end
   supports :reload => true, :restart => true, :start => true, :stop => true
   action [:enable, :restart]
 end
