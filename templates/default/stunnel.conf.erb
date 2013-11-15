@@ -1,0 +1,60 @@
+;
+; Cookbook Name:: licode_cookbook
+;
+; Copyright WellFX, LLC. All rights reserved.
+;
+
+; *****************************************************************************
+; * Global Options                                                            *
+; *****************************************************************************
+
+; A copy of some devices and system files is needed within the chroot jail
+; Chroot conflicts with configuration file reload and many other features
+chroot = /var/lib/stunnel4/
+; Chroot jail can be escaped if setuid option is not used
+setuid = stunnel4
+setgid = stunnel4
+
+; PID is created inside the chroot jail
+pid = /stunnel4.pid
+
+; Debugging stuff (may useful for troubleshooting)
+;debug = 7
+;output = /var/log/stunnel4/stunnel.log
+
+; *****************************************************************************
+; * Service Defaults (may also be specified in individual service sections)   *
+; *****************************************************************************
+
+; Certificate/key is needed in server mode and optional in client mode
+cert = /etc/stunnel/well-fx.net.crt
+key = /etc/stunnel/star_well-fx_net.key
+CAfile = /etc/stunnel/gd_bundle.crt
+
+<% unless @platform_version =~ /^5\..+/ %>
+<%# Cannot force this option for CentOS/RedHat 5.8 %>
+sslVersion = SSLv3
+<% end %>
+<%# Making sure we don't use insecure SSLv2. %>
+options = NO_SSLv2
+
+; Some performance tunings
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+;compression = zlib
+
+
+; *****************************************************************************
+; * Service Definitions (remove all services for inetd mode)                  *
+; *****************************************************************************
+
+[https]
+accept  = 443
+connect = 8080
+; "TIMEOUTclose = 0" is a workaround for a design flaw in Microsoft SSL
+; It does not use SSL close-notify alert designed to prevent truncation attacks
+;TIMEOUTclose = 0
+
+[httpsgwtdebug]
+accept  = 8443
+connect = 8080
