@@ -19,7 +19,7 @@ template "/etc/stunnel/well-fx.net.crt" do
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:stunnel_certificate]
+    :stunnel_certificate => node[:licode_cookbook][:stunnel_cert]
   )
 end
 

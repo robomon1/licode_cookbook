@@ -50,6 +50,45 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "licode_cookbook/stunnel_cert": {
+      "display_name": "Stunnel Certificate",
+      "description": "Stunnel certificate.",
+      "required": "required",
+      "recipes": [
+        "licode_cookbook::installStunnel"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
+    },
+    "licode_cookbook/stunnel_key": {
+      "display_name": "Stunnel Key",
+      "description": "Stunnel key.",
+      "required": "required",
+      "recipes": [
+        "licode_cookbook::installStunnel"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
+    },
+    "licode_cookbook/stunnel_ca": {
+      "display_name": "Stunnel Intermediate Certificate",
+      "description": "Stunnel intermediate certificate",
+      "required": "required",
+      "recipes": [
+        "licode_cookbook::installStunnel"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {
@@ -58,7 +97,8 @@
     "licode_cookbook::default": "Install the dependencies for licode.",
     "licode_cookbook::installErizo": "Build and Install the erizoController for licode.",
     "licode_cookbook::installNuve": "Build and Install nuve for licode.",
-    "licode_cookbook::updateCode": "Updates application source files from the remote repository. This recipe will call the corresponding provider from the app server cookbook, which will download/update application source code."
+    "licode_cookbook::updateCode": "Updates application source files from the remote repository. This recipe will call the corresponding provider from the app server cookbook, which will download/update application source code.",
+    "licode_cookbook::installStunnel": "Install stunnel for SSL support."
   },
   "version": "0.1.0"
 }

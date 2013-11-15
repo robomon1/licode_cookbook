@@ -26,6 +26,9 @@ recipe "licode_cookbook::updateCode",
   " will call the corresponding provider from the app server cookbook," +
   " which will download/update application source code."
 
+recipe "licode_cookbook::installStunnel",
+  "Install stunnel for SSL support."
+
 attribute "licode_cookbook/uri",
   :display_name => "Licode git uri",
   :description =>
@@ -39,3 +42,24 @@ attribute "licode_cookbook/install_dir",
     "Enter the directory where you want to install Licode too.",
   :required => "required",
   :recipes => ["licode_cookbook::default"]
+
+attribute "licode_cookbook/stunnel_cert",
+  :display_name => "Stunnel Certificate",
+  :description =>
+    "Stunnel certificate.",
+  :required => "required",
+  :recipes => ["licode_cookbook::installStunnel"]
+
+attribute "licode_cookbook/stunnel_key",
+  :display_name => "Stunnel Key",
+  :description =>
+    "Stunnel key.",
+  :required => "required",
+  :recipes => ["licode_cookbook::installStunnel"]
+
+attribute "licode_cookbook/stunnel_ca",
+  :display_name => "Stunnel Intermediate Certificate",
+  :description =>
+    "Stunnel intermediate certificate",
+  :required => "required",
+  :recipes => ["licode_cookbook::installStunnel"]
