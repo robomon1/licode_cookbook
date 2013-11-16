@@ -12,38 +12,38 @@ rightscale_marker :begin
 package "stunnel4"
 
 # Save the cert
-template "/etc/stunnel/well-fx.net.crt" do
+template "/etc/certs/well-fx.net.crt" do
   source "stunnel.crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:stunnel_cert]
+    :stunnel_certificate => node[:licode_cookbook][:ssl_crt]
   )
 end
 
 # Save the key
-template "/etc/stunnel/star_well-fx_net.key" do
+template "/etc/certs/star_well-fx_net.key" do
   source "stunnel.crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:stunnel_key]
+    :stunnel_certificate => node[:licode_cookbook][:ssl_key]
   )
 end
 
 # Save the CA cert
-template "/etc/stunnel/gd_bundle.crt" do
+template "/etc/certs/gd_bundle.crt" do
   source "stunnel.crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:stunnel_ca]
+    :stunnel_certificate => node[:licode_cookbook][:ssl_ca]
   )
 end
 

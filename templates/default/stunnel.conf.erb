@@ -27,9 +27,9 @@ pid = /stunnel4.pid
 ; *****************************************************************************
 
 ; Certificate/key is needed in server mode and optional in client mode
-cert = /etc/stunnel/well-fx.net.crt
-key = /etc/stunnel/star_well-fx_net.key
-CAfile = /etc/stunnel/gd_bundle.crt
+cert = /etc/certs/well-fx.net.crt
+key = /etc/certs/star_well-fx_net.key
+CAfile = /etc/certs/gd_bundle.crt
 
 <% unless @platform_version =~ /^5\..+/ %>
 <%# Cannot force this option for CentOS/RedHat 5.8 %>
