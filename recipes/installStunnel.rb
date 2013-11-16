@@ -63,22 +63,6 @@ template "/etc/stunnel/stunnel.conf" do
   owner "root"
   group "root"
   mode "0644"
-#  variables(
-#    :client => params[:client],
-#    :chroot => value_for_platform(
-#      ["ubuntu"] => {"default" => "/var/lib/stunnel4/"},
-#      ["centos", "redhat"] => {"default" => "/var/run/stunnel/"}
-#    ),
-#    :owner => owner,
-#    :group => group,
-#    :pid => value_for_platform(
-#      ["ubuntu"] => {"default" => "/stunnel4.pid"},
-#      ["centos", "redhat"] => {"default" => "/stunnel.pid"}
-#    ),
-#    :accept => params[:accept],
-#    :connect => params[:connect],
-#    :platform_version => node[:platform_version]
-#  )
 end
 
 # Enabling stunnel to start on system boot and restarting to apply new settings
@@ -88,6 +72,15 @@ service value_for_platform(
 ) do
   supports :reload => true, :restart => true, :start => true, :stop => true
   action [:enable, :restart]
+end
+
+# Lets update the iptables to allow for dev gwt debug mode
+execute "insert port reroute firewall rule" do
+  user "root"
+  group "root"
+  #command "/sbin/iptables -I OUTPUT -p tcp -d 127.0.0.1 --dport 85 -j DROP"
+  command "/sbin/iptables -t nat -I PREROUTING -p tcp --dport 8888 -j REDIRECT --to-ports 8080 && /sbin/iptables -t nat -I PREROUTING -p udp --dport 8888 -j REDIRECT --to-ports 8080"
+  action :run
 end
 
 rightscale_marker :end

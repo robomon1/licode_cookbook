@@ -7,6 +7,7 @@ version          '0.1.0'
 
 supports "ubuntu"
 
+depends "sys_firewall"
 depends "rightscale"
 depends "apt"
 depends "git"
