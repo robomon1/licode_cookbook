@@ -11,6 +11,13 @@ rightscale_marker :begin
 
 package "stunnel4"
 
+directory "/etc/certs" do
+  owner "root"
+  group "root"
+  mode 00644
+  action :create
+end
+
 # Save the cert
 template "/etc/certs/well-fx.net.crt" do
   source "stunnel.crt.erb"
