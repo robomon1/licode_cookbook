@@ -127,7 +127,7 @@ attribute "licode_cookbook/aws_secret_key",
   :required => "required",
   :recipes => ["licode_cookbook::configLicode"]
 
-attribute "licode_cookbook/ssl_cert",
+attribute "licode_cookbook/ssl_crt",
   :display_name => "SSL Certificate",
   :description =>
     "SSL certificate.",

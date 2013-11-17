@@ -196,7 +196,7 @@
       "calculated": false,
       "type": "string"
     },
-    "licode_cookbook/ssl_cert": {
+    "licode_cookbook/ssl_crt": {
       "display_name": "SSL Certificate",
       "description": "SSL certificate.",
       "required": "required",
