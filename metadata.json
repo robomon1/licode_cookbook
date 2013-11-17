@@ -79,7 +79,7 @@
       "calculated": false,
       "type": "string"
     },
-    "licode_cookbook/mongo_url": {
+    "licode_cookbook/mongodb_url": {
       "display_name": "MongoDB url.",
       "description": "Enter the mongodb url (ex: 'server1,server2,server3/nuvedb?slaveOk=true')",
       "required": "required",

@@ -64,7 +64,7 @@ attribute "licode_cookbook/rabbitmq_port",
   :required => "required",
   :recipes => ["licode_cookbook::configLicode"]
 
-attribute "licode_cookbook/mongo_url",
+attribute "licode_cookbook/mongodb_url",
   :display_name => "MongoDB url.",
   :description =>
     "Enter the mongodb url (ex: 'server1,server2,server3/nuvedb?slaveOk=true')",
