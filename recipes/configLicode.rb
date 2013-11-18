@@ -18,7 +18,7 @@ end
 
 # Save the licode_config.js file
 template "#{node[:licode_cookbook][:install_dir]}/licode_config.js" do
-  source "licode_config_js.erb"
+  source "licode_config_js"
   cookbook "licode_cookbook"
   owner owner
   group group

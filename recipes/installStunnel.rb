@@ -20,7 +20,7 @@ end
 
 # Save the cert
 template "/etc/certs/well-fx.net.crt" do
-  source "stunnel.crt.erb"
+  source "stunnel_crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
@@ -32,7 +32,7 @@ end
 
 # Save the key
 template "/etc/certs/star_well-fx_net.key" do
-  source "stunnel.crt.erb"
+  source "stunnel_crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
@@ -44,7 +44,7 @@ end
 
 # Save the CA cert
 template "/etc/certs/gd_bundle.crt" do
-  source "stunnel.crt.erb"
+  source "stunnel_crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
@@ -56,7 +56,7 @@ end
 
 # Writing stunnel configuration file
 template "/etc/default/stunnel4" do
-  source "stunnel.default.erb"
+  source "stunnel_default.erb"
   cookbook "licode_cookbook"
   owner "root"
   group "root"
@@ -65,7 +65,7 @@ end
 
 # Writing stunnel configuration file
 template "/etc/stunnel/stunnel.conf" do
-  source "stunnel.conf.erb"
+  source "stunnel_conf.erb"
   cookbook "licode_cookbook"
   owner "root"
   group "root"
