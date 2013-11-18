@@ -78,7 +78,7 @@ attribute "licode_cookbook/turnserver_url",
   :required => "optional",
   :recipes => ["licode_cookbook::configLicode"]
 
-attribute "licode_cookbook/turnserver_user",
+attribute "licode_cookbook/turnserver_username",
   :display_name => "TURN Server User.",
   :description =>
     "Enter the TURN server user.",

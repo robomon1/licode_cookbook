@@ -105,7 +105,7 @@
       "calculated": false,
       "type": "string"
     },
-    "licode_cookbook/turnserver_user": {
+    "licode_cookbook/turnserver_username": {
       "display_name": "TURN Server User.",
       "description": "Enter the TURN server user.",
       "required": "optional",
