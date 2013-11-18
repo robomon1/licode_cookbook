@@ -33,13 +33,6 @@ recipe "licode_cookbook::updateCode",
 recipe "licode_cookbook::installStunnel",
   "Install stunnel for SSL support."
 
-attribute "licode_cookbook/uri",
-  :display_name => "Licode git uri",
-  :description =>
-    "Enter the uri of git repository to download the licdoe code",
-  :required => "required",
-  :recipes => ["licode_cookbook::default"]
-
 attribute "licode_cookbook/install_dir",
   :display_name => "Licode Installation Directory",
   :description =>
