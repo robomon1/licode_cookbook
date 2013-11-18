@@ -20,37 +20,37 @@ end
 
 # Save the cert
 template "/etc/certs/well-fx.net.crt" do
-  source "stunnel_crt.erb"
+  source "ssl_crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:ssl_crt]
+    :ssl_certificate => node[:licode_cookbook][:ssl_crt]
   )
 end
 
 # Save the key
 template "/etc/certs/star_well-fx_net.key" do
-  source "stunnel_crt.erb"
+  source "ssl_crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:ssl_key]
+    :ssl_certificate => node[:licode_cookbook][:ssl_key]
   )
 end
 
 # Save the CA cert
 template "/etc/certs/gd_bundle.crt" do
-  source "stunnel_crt.erb"
+  source "ssl_crt.erb"
   cookbook "licode_cookbook"
   owner owner
   group group
   mode "0400"
   variables(
-    :stunnel_certificate => node[:licode_cookbook][:ssl_ca]
+    :ssl_certificate => node[:licode_cookbook][:ssl_ca]
   )
 end
 
