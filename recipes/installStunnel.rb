@@ -24,7 +24,7 @@ template "/etc/certs/well-fx.net.crt" do
   cookbook "licode_cookbook"
   owner owner
   group group
-  mode "0400"
+  mode "0644"
   variables(
     :ssl_certificate => node[:licode_cookbook][:ssl_crt]
   )
@@ -36,7 +36,7 @@ template "/etc/certs/star_well-fx_net.key" do
   cookbook "licode_cookbook"
   owner owner
   group group
-  mode "0400"
+  mode "0644"
   variables(
     :ssl_certificate => node[:licode_cookbook][:ssl_key]
   )
@@ -48,7 +48,7 @@ template "/etc/certs/gd_bundle.crt" do
   cookbook "licode_cookbook"
   owner owner
   group group
-  mode "0400"
+  mode "0644"
   variables(
     :ssl_certificate => node[:licode_cookbook][:ssl_ca]
   )
