@@ -10,7 +10,7 @@
 rightscale_marker :begin
 
 bash "install_erizo" do
-  cwd "/var/lib/licode/scripts"
+  cwd "#{node[:licode_cookbook][:install_dir]}/scripts"
   code <<-EOH
     ./installErizo.sh
     EOH

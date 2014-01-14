@@ -10,7 +10,7 @@
 rightscale_marker :begin
 
 bash "install_nuve" do
-  cwd "/var/lib/licode/nuve"
+  cwd "#{node[:licode_cookbook][:install_dir]}/nuve"
   code <<-EOH
     ./installNuve.sh
     EOH

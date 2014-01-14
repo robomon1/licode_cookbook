@@ -69,4 +69,9 @@ execute "npm-node-gyp" do
   action :run
 end
 
+execute "npm-forever" do
+  command "npm install -g forever"
+  action :run
+end
+
 rightscale_marker :end
