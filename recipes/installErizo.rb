@@ -20,8 +20,8 @@ end
 template "/etc/init/erizo.conf" do
   source "erizo_conf.erb"
   cookbook "licode_cookbook"
-  owner root
-  group root
+  owner "root"
+  group "root"
   mode "0644"
   variables(
     :install_dir => node[:licode_cookbook][:install_dir]
