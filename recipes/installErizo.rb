@@ -16,4 +16,16 @@ bash "install_erizo" do
     EOH
 end
 
+# Install the upstart script
+template "/etc/init/erizo.conf" do
+  source "erizo_conf.erb"
+  cookbook "licode_cookbook"
+  owner root
+  group root
+  mode "0644"
+  variables(
+    :install_dir => node[:licode_cookbook][:install_dir]
+  )
+end
+
 rightscale_marker :end

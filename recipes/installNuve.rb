@@ -17,4 +17,16 @@ bash "install_nuve" do
 
 end
 
+# Install the upstart script
+template "/etc/init/nuve.conf" do
+  source "nuve_conf.erb"
+  cookbook "licode_cookbook"
+  owner root
+  group root
+  mode "0644"
+  variables(
+    :install_dir => node[:licode_cookbook][:install_dir]
+  )
+end
+
 rightscale_marker :end
