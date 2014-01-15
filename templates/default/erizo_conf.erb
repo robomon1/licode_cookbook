@@ -41,8 +41,8 @@ expect fork
 # Log file path.
 # env LOG="/var/log/my-application.log"
  
-env ROOT="/var/lib/licode"
-env APP_DIR="${ROOT}/erizo_controller/erizoController"
+env ROOT="<%= @install_dir %>"
+env APP_DIR="<%= @install_dir %>/erizo_controller/erizoController"
 # We assume later on that there is a .js extension
 env APP_NAME="erizoController"
 env LOG_DIR="/var/log/licode"

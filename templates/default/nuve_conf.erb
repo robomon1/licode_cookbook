@@ -42,7 +42,7 @@ expect fork
 # env LOG="/var/log/my-application.log"
  
 env ROOT="<%= @install_dir %>"
-env APP_DIR="${ROOT}/nuve/nuveAPI"
+env APP_DIR="<%= @install_dir %>/nuve/nuveAPI"
 # We assume later on that there is a .js extension
 env APP_NAME="nuve"
 env LOG_DIR="/var/log/licode"
