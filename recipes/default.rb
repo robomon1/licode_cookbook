@@ -70,7 +70,7 @@ execute "npm-node-gyp" do
 end
 
 execute "npm-forever" do
-  command "npm install -g forever0.10.11"
+  command "npm install -g forever@0.10.11"
   action :run
 end
 
