@@ -65,12 +65,12 @@ package "nodejs" do
 end
 
 execute "npm-node-gyp" do
-  command "npm install -g node-gyp"
+  command "npm install -g node-gyp@0.12.2"
   action :run
 end
 
 execute "npm-forever" do
-  command "npm install -g forever"
+  command "npm install -g forever0.10.11"
   action :run
 end
 
