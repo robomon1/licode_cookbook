@@ -39,9 +39,11 @@ agu.run_action(:run)
 ## Licode build dependencies
 package "python-software-properties"
 package "software-properties-common"
+package "git"
 #package "gcc"
 package "g++"
 package "make"
+package "libssl-dev"
 package "cmake"
 package "libnice10"
 package "libnice-dev"
@@ -50,12 +52,12 @@ package "libnice-dev"
 package "libboost-regex-dev"
 package "libboost-thread-dev"
 package "libboost-system-dev"
+package "libboost-test-dev"
 package "liblog4cxx10-dev"
 package "rabbitmq-server"
 package "mongodb"
 #package "openjdk-6-jre"
 #package "curl"
-
 package "yasm"
 package "libvpx."
 package "libx264."
@@ -65,12 +67,12 @@ package "nodejs" do
 end
 
 execute "npm-node-gyp" do
-  command "npm install -g node-gyp@0.12.2"
+  command "npm install -g node-gyp@1.0.2"
   action :run
 end
 
 execute "npm-forever" do
-  command "npm install -g forever@0.10.11"
+  command "npm install -g forever@0.11.1"
   action :run
 end
 
