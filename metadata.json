@@ -236,5 +236,5 @@
     "licode_cookbook::updateCode": "Updates application source files from the remote repository. This recipe will call the corresponding provider from the app server cookbook, which will download/update application source code.",
     "licode_cookbook::installStunnel": "Install stunnel for SSL support."
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
