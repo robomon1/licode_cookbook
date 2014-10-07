@@ -149,3 +149,10 @@ attribute "licode_cookbook/ssl_ca",
     "licode_cookbook::configLicode",
     "licode_cookbook::installStunnel"
   ]
+
+attribute "licode_cookbook/public_ip",
+  :display_name => "Public IP address of this server.",
+  :description =>
+    "Enter the Public IP of this server (ex: '127.0.0.1')",
+  :required => "required",
+  :recipes => ["licode_cookbook::configLicode"]

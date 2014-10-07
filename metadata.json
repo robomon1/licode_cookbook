@@ -224,6 +224,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "licode_cookbook/public_ip": {
+      "display_name": "Public IP address of this server.",
+      "description": "Enter the Public IP of this server (ex: '127.0.0.1')",
+      "required": "required",
+      "recipes": [
+        "licode_cookbook::configLicode"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {

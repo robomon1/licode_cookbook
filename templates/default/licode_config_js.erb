@@ -1,57 +1,112 @@
 var config = {}
 
-config.rabbit = {};
-config.nuve = {};
-config.erizoController = {};
-config.cloudProvider = {};
-config.erizo = {};
+var config = {}
 
+/*********************************************************
+ COMMON CONFIGURATION
+ It's used by Nuve, ErizoController, ErizoAgent and ErizoJS
+**********************************************************/
+config.rabbit = {};
 config.rabbit.host = '<%= @rabbitmq_host %>';
 config.rabbit.port = <%= @rabbitmq_port %>;
+config.logger = {};
+config.logger.config_file = '../log4js_configuration.json'; //default value: "../log4js_configuration.json"
 
-//config.nuve.dataBaseURL = "localhost/nuvedb";
-config.nuve.dataBaseURL = '<%= @mongodb_url %>'
-config.nuve.superserviceID = '525f2f195004c5c96f3e58fd';
-config.nuve.superserviceKey = '23917';
-config.nuve.testErizoController = '<%= @erizo_controller %>';
-
-//Use undefined to run clients without Stun 
-config.erizoController.stunServerUrl = 'stun:stun.l.google.com:19302';
-//config.erizoController.stunServerUrl = 'stun:23.23.76.146:443';
-
-//Use undefined to run clients without Turn
-config.erizoController.turnServer = {};
-config.erizoController.turnServer.url = '<%= @turnserver_url %>';
-config.erizoController.turnServer.username = '<%= @turnserver_username %>';
-config.erizoController.turnServer.password = '<%= @turnserver_password %>';
-config.erizoController.ssl_key = '/etc/certs/well-fx.net.crt';
-config.erizoController.ssl_crt = '/etc/certs/star_well-fx_net.key';
-config.erizoController.ssl_ca = '/etc/certs/gd_bundle.crt';
-
-config.erizoController.defaultVideoBW = 300;
-config.erizoController.maxVideoBW = 300;
-
-config.erizoController.warning_n_rooms = 50;
-config.erizoController.limit_n_rooms = 100;
-config.erizoController.interval_time_keepAlive = 1000;
-
-//STUN server IP address and port to be used by the server.
-//if '' is used, the address is discovered locally
-config.erizo.stunserver = '<%= @stunserver_host %>';
-config.erizo.stunport = <%= @stunserver_port %>;
-
-//note, this won't work with all versions of libnice. With 0 all the available ports are used
-config.erizo.minport = 0;
-config.erizo.maxport = 0;
-
+/*********************************************************
+ CLOUD PROVIDER CONFIGURATION
+ It's used by Nuve and ErizoController
+**********************************************************/
+config.cloudProvider = {};
 config.cloudProvider.name = 'amazon';
 //In Amazon Ec2 instances you can specify the zone host. By default is 'ec2.us-east-1a.amazonaws.com' 
 config.cloudProvider.host = 'ec2.amazonaws.com';
 config.cloudProvider.accessKey = '<%= @aws_access_key %>';
 config.cloudProvider.secretAccessKey = '<%= @aws_secret_key %>';
 
-// Roles to be used by services
-config.roles = {"presenter":["publish", "subscribe", "record"], "viewer":["subscribe"], "test":["publish", "subscribe", "record"]};
+/*********************************************************
+ NUVE CONFIGURATION
+**********************************************************/
+config.nuve = {};
+config.nuve.dataBaseURL = '<%= @mongodb_url %>'
+config.nuve.superserviceID = '525f2f195004c5c96f3e58fd';
+config.nuve.superserviceKey = '23917';
+config.nuve.testErizoController = '<%= @erizo_controller %>';
 
+/*********************************************************
+ ERIZO CONTROLLER CONFIGURATION
+**********************************************************/
+config.erizoController = {};
+
+//Use undefined to run clients without Stun
+config.erizoController.stunServerUrl = 'stun:<%= @stunserver_host %>:<%= @stunserver_port %>'; // default value: 'stun:stun.l.google.com:19302'
+
+// Default and max video bandwidth parameters to be used by clients
+config.erizoController.defaultVideoBW = 300; //default value: 300
+config.erizoController.maxVideoBW = 300; //default value: 300
+
+// Public erizoController IP for websockets (useful when behind NATs)
+// Use '' to automatically get IP from the interface
+config.erizoController.publicIP = '<%= @public_ip %>'; //default value: ''
+// Use '' to use the public IP address instead of a hostname
+config.erizoController.hostname = ''; //default value: ''
+config.erizoController.port = 8080; //default value: 8080
+// Use true if clients communicate with erizoController over SSL
+config.erizoController.ssl = false; //default value: false
+
+// Use the name of the inferface you want to bind to for websockets
+// config.erizoController.networkInterface = 'eth1' // default value: undefined
+
+//Use undefined to run clients without Turn
+config.erizoController.turnServer = {}; // default value: undefined
+config.erizoController.turnServer.url = '<%= @turnserver_url %>';
+config.erizoController.turnServer.username = '<%= @turnserver_username %>';
+config.erizoController.turnServer.password = '<%= @turnserver_password %>';
+
+config.erizoController.ssl_key = '/etc/certs/well-fx.net.crt';
+config.erizoController.ssl_crt = '/etc/certs/star_well-fx_net.key';
+config.erizoController.ssl_ca = '/etc/certs/gd_bundle.crt';
+
+config.erizoController.warning_n_rooms = 50;
+config.erizoController.limit_n_rooms = 100;
+config.erizoController.interval_time_keepAlive = 1000;
+
+// Roles to be used by services
+config.erizoController.roles =
+{"presenter": {"publish": true, "subscribe": true, "record": true},
+    "viewer": {"subscribe": true},
+    "viewerWithData": {"subscribe": true, "publish": {"audio": false, "video": false, "screen": false, "data": true}}}; // default value: {"presenter":{"publish": true, "subscribe":true, "record":true}, "viewer":{"subscribe":true}, "viewerWithData":{"subscribe":true, "publish":{"audio":false,"video":false,"screen":false,"data":true}}}
+
+// If true, erizoController sends stats to rabbitMQ queue "stats_handler"
+config.erizoController.sendStats = false; // default value: false
+
+// If undefined, the path will be /tmp/
+config.erizoController.recording_path = undefined; // default value: undefined
+
+/*********************************************************
+ ERIZO AGENT CONFIGURATION
+**********************************************************/
+config.erizoAgent = {};
+
+// Max processes that ErizoAgent can run
+config.erizoAgent.maxProcesses    = 1; // default value: 1
+// Number of precesses that ErizoAgent runs when it starts. Always lower than or equals to maxProcesses.
+config.erizoAgent.prerunProcesses = 1; // default value: 1
+
+/*********************************************************
+ ERIZO JS CONFIGURATION
+**********************************************************/
+config.erizo = {};
+
+//STUN server IP address and port to be used by the server.
+//if '' is used, the address is discovered locally
+config.erizo.stunserver = '<%= @stunserver_host %>'; // default value: ''
+config.erizo.stunport = <%= @stunserver_port %>; // default value: 0
+
+//note, this won't work with all versions of libnice. With 0 all the available ports are used
+config.erizo.minport = 0; // default value: 0
+config.erizo.maxport = 0; // default value: 0
+
+/***** END *****/
+// Following lines are always needed.
 var module = module || {};
 module.exports = config;
