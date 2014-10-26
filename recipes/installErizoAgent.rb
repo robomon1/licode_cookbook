@@ -17,8 +17,8 @@ bash "install_erizo" do
 end
 
 # Install the upstart script
-template "/etc/init/erizo.conf" do
-  source "erizo_conf.erb"
+template "/etc/init/erizo_agent.conf" do
+  source "erizo_agent_conf.erb"
   cookbook "licode_cookbook"
   owner "root"
   group "root"
