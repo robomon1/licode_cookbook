@@ -19,11 +19,14 @@ recipe "licode_cookbook::default",
 recipe "licode_cookbook::configLicode",
   "Set the attributes of the licode_config.js."
 
-recipe "licode_cookbook::installErizo",
-  "Build and Install the erizoController for licode."
-
 recipe "licode_cookbook::installNuve",
   "Build and Install nuve for licode."
+
+recipe "licode_cookbook::installErizoController",
+  "Build and Install the erizoController for licode."
+
+recipe "licode_cookbook::installErizoAgent",
+  "Build and Install the erizoAgent for licode."
 
 recipe "licode_cookbook::updateCode",
   "Updates application source files from the remote repository. This recipe" +

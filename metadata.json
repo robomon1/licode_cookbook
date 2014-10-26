@@ -270,8 +270,9 @@
   "recipes": {
     "licode_cookbook::default": "Install the dependencies for licode.",
     "licode_cookbook::configLicode": "Set the attributes of the licode_config.js.",
-    "licode_cookbook::installErizo": "Build and Install the erizoController for licode.",
     "licode_cookbook::installNuve": "Build and Install nuve for licode.",
+    "licode_cookbook::installErizoController": "Build and Install the erizoController for licode.",
+    "licode_cookbook::installErizoAgent": "Build and Install the erizoAgent for licode.",
     "licode_cookbook::updateCode": "Updates application source files from the remote repository. This recipe will call the corresponding provider from the app server cookbook, which will download/update application source code.",
     "licode_cookbook::installStunnel": "Install stunnel for SSL support."
   },
