@@ -65,12 +65,26 @@ attribute "licode_cookbook/mongodb_url",
   :recipes => ["licode_cookbook::configLicode"]
 
 attribute "licode_cookbook/erizo_controller",
-  :display_name => "Erizo Controller Host and Port.",
+  :display_name => "Erizo Controller Host.",
   :description =>
     "Enter the erizo controler host and optional port (ex: 'server1.example.com:443')",
   :required => "required",
   :recipes => ["licode_cookbook::configLicode"]
 
+attribute "licode_cookbook/erizo_controller_port",
+  :display_name => "Erizo Controller Port.",
+  :description =>
+    "Enter the erizo controler port (ex: 'server1.example.com:443')",
+  :required => "required",
+  :recipes => ["licode_cookbook::configLicode"]
+    
+attribute "licode_cookbook/erizo_controller_ssl",
+  :display_name => "Erizo Controller SSL.",
+  :description =>
+    "Turn on SSL support for Erizo Controller (ex: 'true')",
+  :required => "required",
+  :recipes => ["licode_cookbook::configLicode"]
+    
 attribute "licode_cookbook/turnserver_url",
   :display_name => "TURN Server URL.",
   :description =>

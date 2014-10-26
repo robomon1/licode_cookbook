@@ -28,6 +28,8 @@ template "#{node[:licode_cookbook][:install_dir]}/licode_config.js" do
     :rabbitmq_port => node[:licode_cookbook][:rabbitmq_port],
     :mongodb_url => node[:licode_cookbook][:mongodb_url],
     :erizo_controller => node[:licode_cookbook][:erizo_controller],
+    :erizo_controller_port => node[:licode_cookbook][:erizo_controller_port],
+    :erizo_controller_ssl => node[:licode_cookbook][:erizo_controller_ssl],
     :turnserver_url => node[:licode_cookbook][:turnserver_url],
     :turnserver_username => node[:licode_cookbook][:turnserver_username],
     :turnserver_password => node[:licode_cookbook][:turnserver_password],

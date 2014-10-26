@@ -48,7 +48,8 @@ env APP_NAME="erizoController"
 env LOG_DIR="/var/log/licode"
 env NODE_BIN_DIR="/usr/bin"
 env NODE_PATH="/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript"
- 
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOT/erizo/build/erizo:$ROOT/erizo:$ROOT/build/libdeps/build/lib
+
 pre-start script
     if [ ! -d "$LOG_DIR" ]; then
         mkdir "$LOG_DIR"
