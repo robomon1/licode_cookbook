@@ -9,12 +9,12 @@
 
 rightscale_marker :begin
 
-#bash "install_erizo" do
-#  cwd "#{node[:licode_cookbook][:install_dir]}/scripts"
-#  code <<-EOH
-#    ./installErizo.sh
-#    EOH
-#end
+  #bash "install_erizo" do
+  #  cwd "#{node[:licode_cookbook][:install_dir]}/scripts"
+  #  code <<-EOH
+  #    ./installErizo.sh
+  #    EOH
+  #end
 
 # Install the upstart script
 template "/etc/init/erizo_agent.conf" do
