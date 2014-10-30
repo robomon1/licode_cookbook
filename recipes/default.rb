@@ -221,13 +221,13 @@ end
 
 execute "make-mediadeps" do
   command "make -s V=0"
-  cwd "#{lib_dir}/mediadeps-1.1"
+  cwd "#{lib_dir}/libav-9.13"
   action :run
 end
 
 execute "install-mediadeps" do
   command "make install"
-  cwd "#{lib_dir}/mediadeps-1.1"
+  cwd "#{lib_dir}/libav-9.13"
   action :run
 end
 
