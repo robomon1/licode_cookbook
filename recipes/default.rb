@@ -136,7 +136,7 @@ end
 
 execute "install-libnice" do
   command "make install"
-  cwd "#{lib_dir}/libnice-1.0.1g"
+  cwd "#{lib_dir}/libnice-0.1.4"
   action :run
 end
 
