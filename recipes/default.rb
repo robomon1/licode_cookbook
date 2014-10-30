@@ -116,7 +116,7 @@ execute "untar-libnice" do
 end
 
 execute "patch-libnice" do
-  command "patch -R ./agent/conncheck.c < #{lib_dir}/libnice-0.1.4/libnice-014.patch0"
+  command "patch -R ./agent/conncheck.c < #{root_dir}/scripts/libnice-014.patch0"
   cwd "#{lib_dir}/libnice-0.1.4"
   action :run
 end
