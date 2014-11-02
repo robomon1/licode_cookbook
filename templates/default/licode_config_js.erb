@@ -60,9 +60,9 @@ config.erizoController.turnServer.url = '<%= @turnserver_url %>';
 config.erizoController.turnServer.username = '<%= @turnserver_username %>';
 config.erizoController.turnServer.password = '<%= @turnserver_password %>';
 
-config.erizoController.ssl_key = '/etc/certs/well-fx.net.crt';
-config.erizoController.ssl_crt = '/etc/certs/star_well-fx_net.key';
-config.erizoController.ssl_ca = '/etc/certs/gd_bundle.crt';
+config.erizoController.ssl_crt = '<%= @ssl_crt %>';
+config.erizoController.ssl_key = '<%= @ssl_key %>';
+config.erizoController.ssl_ca = '<%= @ssl_ca %>';
 
 config.erizoController.warning_n_rooms = 50;
 config.erizoController.limit_n_rooms = 100;
